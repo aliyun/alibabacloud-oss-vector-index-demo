@@ -1,0 +1,38 @@
+[project]
+name = "oss-vector-index-example"
+version = "0.1.0"
+description = "oss vector index example"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alibabacloud-oss-v2>=1.2.1",
+    "dashscope>=1.24.4",
+    "gradio>=5.44.1",
+    "notebook>=7.4.5",
+    "pillow>=11.3.0",
+    "pydantic>=2.11.7",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.5",
+]
+
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true
+
+[build-system]
+requires = ["uv_build>=0.8.15,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+namespace = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+asyncio_mode = "auto"
+addopts ="-s --capture=tee-sys"
+log_cli = "true"
+log_cli_level = "INFO"
